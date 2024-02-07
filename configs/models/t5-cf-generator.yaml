@@ -1,0 +1,5 @@
+name: t5-cf-generator
+paths:
+    model: model.pt
+model_config: t5-small
+source_url: https://sliit-xai.s3.ap-south-1.amazonaws.com/models/t5-cf-generator.zip

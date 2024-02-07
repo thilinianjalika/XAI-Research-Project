@@ -1,0 +1,52 @@
+Current plan - Random forest
+
+Get shapley values of all features for the current model. -> Reduces the randomness of removing features.
+(Text Counterfactuals via Latent Optimization and Shapley-Guided Search) THis paper gives replacements instead of removing the feature.
+Get the features contributing to each tree and the whole model for the Random forest -> Reduces the affecting feature number.
+Order the features by the shapley value.
+Change the value of leaf nodes and try to find cunterfactuals.
+Works only for the Random Forest.
+
+Current Implementation - Random Forest
+
+Get shapley values of all features for the current model. -> Reduces the randomness of removing features
+Get shapely values of features.
+Expand and prune the required instance to generate counterfactuals.
+Expand and prune order of the counterfactuals is sorted according to the shapely value of each feature.
+Run the prediction algorithm of the RF model to check if a desirable counterfactual is generated.
+If a desirable length counterfactual is generated, output the counterfactual in a text format.
+
+To be Developed -> 
+
+Get the desicion path of each tree in the random forest.
+Find the features affecting the prediction.
+Initially consider only the features with high shapely values and are in the set of features in decision trees.
+Check for the speed of operation.
+
+NEW 
+Previously -> used shap values (Accurate. But takes time to calculate.)
+    Therefore, Use feature_importance_ in random forest model.
+    These are calculated when training the model. -> Takes relatively less time when compared to shap. No time taken to calculate values.
+        Issues ->   2) Not instance specific
+                    1) Does not give direction of class change
+        solved ->   Get feature_importance_
+                    take instance
+                    remove feature importances not related to tte current instance -> Reduces memory consuption + takes less time to calculate.
+                    Take each feature -> Check the affect of removing that feature -> Assign a class change sign to the feature_importance_.
+
+
+
+Current Implementation - Logistic Regression
+
+Get shapley values of all features for the current model. -> Reduces the randomness of removing features
+Get shapely values of features.
+Expand and prune the required instance to generate counterfactuals.
+Expand and prune order of the counterfactuals is sorted according to the shapely value of each feature.
+Run the prediction algorithm of the LR model to check if a desirable counterfactual is generated.
+If a desirable length counterfactual is generated, output the counterfactual in a text format.
+
+To be Developed
+
+Get the feature importance of the current model using weights of features.
+Check for replacements of features which maximises the change in prediction probability. -> Calculated using shap values.
+Extension to https://arxiv.org/pdf/1906.09293.pdf -> by adding replacements instead of removals to maximise the change

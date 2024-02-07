@@ -1,0 +1,35 @@
+export default {
+    main: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
+        padding: "6rem",
+        minHeight: "100vh",
+        "&::before": {
+            background: "var(--secondary-glow)",
+            borderRadius: "50%",
+            width: "480px",
+            height: "360px",
+            marginLeft: "-400px",
+            content: '""',
+            left: "50%",
+            position: "absolute",
+            filter: "blur(45px)",
+            transform: "translateZ(0)",
+            zIndex: "-1",
+        },
+
+        "&::after": {
+            background: "var(--primary-glow)",
+            width: "240px",
+            height: "180px",
+            zIndex: "-1",
+            content: '""',
+            left: "50%",
+            position: "absolute",
+            filter: "blur(45px)",
+            transform: "translateZ(0)",
+        },
+    },
+};

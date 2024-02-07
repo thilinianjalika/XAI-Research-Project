@@ -1,0 +1,8 @@
+name: snli_1.0_contra
+paths:
+    test: snli_1.0_contra_test.csv
+    train: snli_1.0_contra_train.csv
+    val: snli_1.0_contra_val.csv
+source_url: https://sliit-xai.s3.ap-south-1.amazonaws.com/datasets/snli_1.0_contra.zip
+model_name: t5-small
+max_token_len: 64

@@ -1,0 +1,19 @@
+name: analysis-models
+source_url: https://sliit-xai.s3.ap-south-1.amazonaws.com/models/analysis-models.zip
+paths:
+    tfidf: tfidf.pkl
+    knn: knn.pkl
+    lr: lr.pkl
+    rf: rf.pkl
+    svm: svm.pkl
+models:
+    knn: knn.pkl
+    lr: lr.pkl
+    rf: rf.pkl
+    svm: svm.pkl
+encoders:
+    input_encoder_name: tfidf
+    output_encoder_name: lut
+    output_labels:
+        - negative
+        - positive

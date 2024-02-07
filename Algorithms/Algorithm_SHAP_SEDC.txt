@@ -1,0 +1,78 @@
+
+Inputs ->
+	feature names -> List of features used in the TFIDF vectoriser. Used to give words in the final output
+	threshold T -> Threshold to consider an output as counterfactual
+	classifier_fn (C) -> classifier prediction probability function in the random forest classifier
+	max_iter -> Maximum number of iterations run before termination if a CF is not found
+	max_time -> Maximum time that the algorithm run before termination if a CF is not found
+Output ->
+	list of words to remove to reverse the model output.
+Process ->
+
+input -> Instance W -> document to classify. Has m words
+
+c = initial predicted class
+p = probability of the predicted class
+r = revert or not. Set to zero if predicted class is positive.
+
+n_explanations = 0
+explanations = {}
+
+combinations_to_expand = {}
+prob_combinations_to_expand = {}
+shap_combinations_to_expand = {}
+
+shap_vals = {}_n shapley values of each feature with reference point taken as zero vector
+W = [] indices of features sorted in the descending order of shap values
+
+for i = 1 to m:
+	p_n = C(w_i) -> Instance with the feature w_i removed
+	if (p_n < T):
+		explanations = explanations U w_i
+	else:
+		combinations_to_expand = combinations_to_expand U w_i
+		prob_combinations_to_expand = prob_combinations_to_expand U w_i
+		shap_combinations_to_expand = shap_combinations_to_expand U shap_vals(w_i)
+	end if
+end for
+
+iteration = 1
+start time
+while True:
+	if iteration > max_iter OR time > max_time:
+		end while
+	combi = word combinations to remove where shap_combinations_to_expand is maximal
+	new_combi_set = expanded combinations of combi withiut the exisiting combinations in explanations
+
+	for combo in new_combi_set do:
+		p_n = C(w_i)
+		if (p_n < T):
+			explanations = explanations U w_i
+			end while
+		else:
+			combinations_to_expand = combinations_to_expand U w_i
+			prob_combinations_to_expand = prob_combinations_to_expand U w_i
+			shap_combinations_to_expand = shap_combinations_to_expand U shap_vals(w_i)
+		end if
+	end for
+	iteration ++
+	increment time
+end while
+
+Does not always converge ->
+	Even though shap values individually give measures for each feature better than score change,
+	for a set of features, algebraic sum of shap values is not a good measure.
+
+But for changes with less number of words like 1-4 words:
+	using shap values give faster results
+
+observation - Also gives better results when converting negative results to positive results when using shap values
+
+Can use feature_importance_ of Random forest instead of shapely values. But need to check if the feature contributes to positive or negative change in the current instance.
+
+x1 -> (2.98)
+
+x2 -> 2.98 - 0.6
+x3 -> 2.98 + 1.3
+x4 -> 2.98 + 2.0
+

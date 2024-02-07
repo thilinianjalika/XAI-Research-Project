@@ -1,0 +1,10 @@
+name: wf-cf-generator
+flip_prob: 0.5
+flipping_tags:
+    - VB
+    - VBD
+    - VBG
+    - VBN
+    - VBP
+    - VBZ
+sample_prob_decay_factor: 0.2

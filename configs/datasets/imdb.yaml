@@ -1,0 +1,14 @@
+name: imdb
+source_url: https://sliit-xai.s3.ap-south-1.amazonaws.com/datasets/imdb.zip
+paths:
+    data: imdb.csv
+split:
+    test: 0.1
+    train: 0.8
+    val: 0.1
+labels:
+    - negative
+    - positive
+extras:
+    input_encoder_path: tfidf.pkl
+    min_df: 30

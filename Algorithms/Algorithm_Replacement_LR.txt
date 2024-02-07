@@ -1,0 +1,66 @@
+
+Inputs ->
+	feature names -> List of features used in the TFIDF vectoriser. Used to give words in the final output
+	threshold T -> Threshold to consider an output as counterfactual
+	classifier_fn (C) -> classifier prediction probability function in the random forest classifier
+	max_iter -> Maximum number of iterations run before termination if a CF is not found
+	max_time -> Maximum time that the algorithm run before termination if a CF is not found
+Output ->
+	list of words to remove or to change to reverse the model output.
+Process ->
+
+input -> Instance W -> document to classify. Has m words
+
+c = initial predicted class
+p = probability of the predicted class
+r = revert or not. Set to zero if predicted class is positive.
+
+n_explanations = 0
+explanations = {}
+
+combinations_to_expand = {}
+prob_combinations_to_expand = {}
+shap_combinations_to_expand = {}
+
+W = [] indices of features
+R = [] indices of replacement features of feature w_i if such replcement exsists.
+
+for i = 1 to m:
+	p_n = C(w_i) # Instance with w_i removed or changed to r_i
+	if (p_n < T):
+		explanations = explanations U w_i
+	else:
+		combinations_to_expand = combinations_to_expand U w_i
+		prob_combinations_to_expand = prob_combinations_to_expand U w_i
+	end if
+end for
+
+iteration = 1
+start time
+while True:
+	if iteration > max_iter OR time > max_time:
+		end while
+	combi = word combinations to remove where change in prediction score towards reverse class is maximal
+	new_combi_set = expanded combinations of combi without the exisiting combinations in explanations
+
+	for combo in new_combi_set do:
+		p_n = C(w_i)
+		if (p_n < T):
+			explanations = explanations U w_i
+		else:
+			combinations_to_expand = combinations_to_expand U w_i
+			prob_combinations_to_expand = prob_combinations_to_expand U w_i
+			shap_combinations_to_expand = shap_combinations_to_expand U shap_vals(w_i)
+		end if
+	end for
+	iteration ++
+	increment time
+end while
+
+replcement antonyms are generated from the wordnet library
+
+Gives faster results than removal as it pushes the results towards the reverse class
+
+Need to choose a proper antonym as antonyms maybe chosen to push towards the current class.
+This is prevented by using SHAP values to choose antonyms
+Used paper - Text Counterfactuals via Latent Optimization and Shapley-Guided Search

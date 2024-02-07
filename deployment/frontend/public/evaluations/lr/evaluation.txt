@@ -1,0 +1,10 @@
+       ---- Classification report for LR ----
+              precision    recall  f1-score   support
+
+           0       0.90      0.89      0.90      2529
+           1       0.89      0.90      0.89      2470
+
+    accuracy                           0.89      4999
+   macro avg       0.89      0.89      0.89      4999
+weighted avg       0.89      0.89      0.89      4999
+

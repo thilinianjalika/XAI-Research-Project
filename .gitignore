@@ -1,0 +1,8 @@
+git-colab-terminal.ipynb
+**/__pycache__/
+.vscode/
+.creds/
+/models
+/datasets
+/wandb
+/evaluations

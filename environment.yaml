@@ -1,0 +1,25 @@
+name: xai
+channels:
+    - defaults
+dependencies:
+    - python=3.9
+    - pip=23.1.2
+    - pip:
+          - scikit-learn==1.2.2
+          - nltk==3.8.1
+          - ipykernel==6.24.0
+          - ipywidgets==7.6.5
+          - pyyaml==6.0
+          - pandas==2.0.3
+          - beautifulsoup4==4.12.2
+          - wget==3.2
+          - numpy==1.23.5
+          - shap==0.41.0
+          - matplotlib==3.5.1
+          - seaborn==0.11.2
+          - ordered-set==4.1.0
+          - boto3==1.27.0
+          - torch==2.0.1
+          - transformers==4.31.0
+          - sagemaker==2.173.0
+          - sentencepiece==0.1.99

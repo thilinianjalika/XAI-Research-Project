@@ -1,0 +1,7 @@
+bs4
+scikit-learn
+nltk
+wget
+sentencepiece
+transformers
+accelerate>=0.20.3
