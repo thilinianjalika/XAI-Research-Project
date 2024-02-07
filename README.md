@@ -12,6 +12,10 @@ How to get a counterfactual rule generation-based explanation for the SVM, k-NN,
 
 ## Individual research question
 
+## Thilini Anjalika
+
+How to get a counterfactual rule generation-based explanation for the Random Forest classifier, when it becomes black box in text classification?
+
 ## Sashini Devindi
 
 How to get a counterfactual rule generation-based explanation for the Support Vector Machine classifier, when it handle non-linear separable data in text classification?
@@ -20,15 +24,16 @@ How to get a counterfactual rule generation-based explanation for the Support Ve
 
 How to get a counterfactual rule generation-based explanation for the Logistic Regression classifier, when it handles non-linear relationship or greater data complexity in text classification?
 
-## Thilini Anjalika
-
-How to get a counterfactual rule generation-based explanation for the Random Forest classifier, when it becomes black box in text classification?
-
 ## Lakshani N.V.M.
 
 How to get a counterfactual rule generation-based explanation for the k-NN classifier, when it handle  Curse of Dimensionality problem in text classification?
 
 ## Individual Objectives
+
+
+## Thilini Anjalika
+
+Provide a novel model-specific, local  XAI solution to enhance the model interpretability of ensemble models focus on Random forest by developing a novel counterfactual rule generation mechanism related to the text classification domain.
 
 ## Sashini Devindi
 
@@ -37,10 +42,6 @@ Provide a novel model-specific, local  XAI solution to enhance the model interpr
 ## Srinidee
 
 Provide a novel model-specific, local XAI solution to enhance the model interpretability of binary logistic regression model focus on LR by developing a novel counterfactual rule generation mechanism related to the text classification domain.
-
-## Thilini Anjalika
-
-Provide a novel model-specific, local  XAI solution to enhance the model interpretability of ensemble models focus on Random forest by developing a novel counterfactual rule generation mechanism related to the text classification domain.
 
 ## Lakshani N.V.M.
 
